@@ -1,0 +1,12 @@
+#set static IP adress
+$ipaddress ="192.168.10.3"
+$ipprefix ="24"
+$ipgw ="192.168.10.1"
+$ipdns ="127.0.0.1"
+$ipif =(Get-NetAdapter).ifIndex
+
+New-NetIPAddress -IPAddress $ipaddress -PrefixLenght $ipprefix -InterfaceIndex $ipif -DefaultGareway $ipgw
+
+#rename computer
+$newname= "srv-dc-03"
+Rename-Computer -NewName "Servidor01" -force
